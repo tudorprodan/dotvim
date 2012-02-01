@@ -1,3 +1,9 @@
+let g:pathogen_disabled = ["yankring"]
+
+if !has('gui_running')
+    call add(g:pathogen_disabled, 'csscolor')
+endif
+
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
