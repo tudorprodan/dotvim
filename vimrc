@@ -55,7 +55,7 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 set shortmess=atTOI
 
-let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{}}  
+let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{} }
 let g:FuzzyFinderOptions.Base.trim_length = 170
 let g:FuzzyFinderOptions.Base.ignore_case = 1
 let g:FuzzyFinderOptions.Base.abbrev_map  = {}
