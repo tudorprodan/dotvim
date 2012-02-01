@@ -1,3 +1,5 @@
+call pathogen#infect()
+
 if has('mouse')
     set mouse=a
 endif
@@ -7,6 +9,10 @@ set hlsearch
 
 filetype indent on
 filetype plugin indent on
+
+if executable("par")
+    set formatprg=par\ -w78
+endif
 
 set autoindent
 set smartindent
@@ -46,12 +52,6 @@ set expandtab
 
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
-
-if !exists("$SSH_CONNECTION")
-    "    set t_Co=256
-    "    colorscheme darkburn
-    "    colorscheme molokai
-endif
 
 set shortmess=atTOI
 
