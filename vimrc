@@ -1,4 +1,4 @@
-let g:pathogen_disabled = ["yankring"]
+let g:pathogen_disabled = ["yankring", "fuzzyfinder", "l9"]
 
 if !has('gui_running')
     call add(g:pathogen_disabled, 'csscolor')
@@ -91,10 +91,15 @@ let g:user_zen_settings = { "indentation": "    " }
 
 nnoremap <C-p> :MBEbp<CR>
 nnoremap <C-n> :MBEbn<CR>
+
 nnoremap <C-t> :NERDTreeToggle<CR>
+
 "nnoremap <C-f> :FufFile **/<CR>
+"nnoremap <C-b> :FufBuffer<CR>
+
 nnoremap <C-f> :CommandT<CR>
-nnoremap <C-b> :FufBuffer<CR>
+nnoremap <C-b> :CommandTBuffer<CR>
+
 nnoremap <leader>bd :Bclose<CR>
 nnoremap <leader>bD :Bclose!<CR>
 nnoremap <leader>swq :let g:syntastic_quiet_warnings=1<CR>
