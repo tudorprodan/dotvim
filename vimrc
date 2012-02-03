@@ -1,4 +1,7 @@
-let g:pathogen_disabled = ["yankring", "fuzzyfinder", "l9"]
+""""""""""""""""""""""""""""""""""""""""
+" Pathogen
+""""""""""""""""""""""""""""""""""""""""
+let g:pathogen_disabled = ["yankring", "fuzzyfinder", "l9", "minibufexpl"]
 
 if !has('gui_running')
     call add(g:pathogen_disabled, 'csscolor')
@@ -7,15 +10,46 @@ endif
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
+filetype indent on
+filetype plugin indent on
+
+
+""""""""""""""""""""""""""""""""""""""""
+" Keymaps
+""""""""""""""""""""""""""""""""""""""""
+for key in ['h', 'j', 'k', 'l']
+    exe "nnoremap <C-" . key . "> <C-w>" . key
+endfor
+
+"nnoremap <C-p> :MBEbp<CR>
+"nnoremap <C-n> :MBEbn<CR>
+nnoremap <C-p> :bp<CR>
+nnoremap <C-n> :bn<CR>
+
+nnoremap <C-t> :NERDTreeToggle<CR>
+
+"nnoremap <C-f> :FufFile **/<CR>
+"nnoremap <C-b> :FufBuffer<CR>
+nnoremap <C-f> :CommandT<CR>
+nnoremap <C-b> :CommandTBuffer<CR>
+
+nnoremap <leader>bd :Bclose<CR>
+nnoremap <leader>bD :Bclose!<CR>
+nnoremap <leader>swq :let g:syntastic_quiet_warnings=1<CR>
+nnoremap <leader>swv :let g:syntastic_quiet_warnings=0<CR>
+
+cmap w!! %!sudo tee > /dev/null %
+
+
+""""""""""""""""""""""""""""""""""""""""
+" Misc
+""""""""""""""""""""""""""""""""""""""""
 if has('mouse')
     set mouse=a
 endif
 
 syntax on
 set hlsearch
-
-filetype indent on
-filetype plugin indent on
 
 if executable("par")
     set formatprg=par\ -w78
@@ -62,6 +96,10 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 set shortmess=atTOI
 
+
+"""""""""""""""""""""""""""""""""""""""""""""
+" Plugins
+"""""""""""""""""""""""""""""""""""""""""""""
 let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{} }
 let g:FuzzyFinderOptions.Base.trim_length = 170
 let g:FuzzyFinderOptions.Base.ignore_case = 1
@@ -89,24 +127,10 @@ let python_highlight_all = 1
 
 let g:user_zen_settings = { "indentation": "    " }
 
-nnoremap <C-p> :MBEbp<CR>
-nnoremap <C-n> :MBEbn<CR>
 
-nnoremap <C-t> :NERDTreeToggle<CR>
-
-"nnoremap <C-f> :FufFile **/<CR>
-"nnoremap <C-b> :FufBuffer<CR>
-
-nnoremap <C-f> :CommandT<CR>
-nnoremap <C-b> :CommandTBuffer<CR>
-
-nnoremap <leader>bd :Bclose<CR>
-nnoremap <leader>bD :Bclose!<CR>
-nnoremap <leader>swq :let g:syntastic_quiet_warnings=1<CR>
-nnoremap <leader>swv :let g:syntastic_quiet_warnings=0<CR>
-
-cmap w!! %!sudo tee > /dev/null %
-
+"""""""""""""""""""""""""""""""""""""""""""""
+" Functions
+"""""""""""""""""""""""""""""""""""""""""""""
 for prefix in ['i', 'n', 'v']
     for key in ['<Up>', '<Down>', '<Left>', '<Right>']
         exe prefix . "noremap " . key . " <Nop>"
