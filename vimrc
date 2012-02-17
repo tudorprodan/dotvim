@@ -35,8 +35,10 @@ nnoremap <C-b> :CommandTBuffer<CR>
 
 nnoremap <leader>bd :Bclose<CR>
 nnoremap <leader>bD :Bclose!<CR>
-nnoremap <leader>swq :let g:syntastic_quiet_warnings=1<CR>
-nnoremap <leader>swv :let g:syntastic_quiet_warnings=0<CR>
+
+nnoremap <leader>sw :SyntasticToggleWarnings<CR>
+"nnoremap <leader>swq :let g:syntastic_quiet_warnings=1<CR>
+"nnoremap <leader>swv :let g:syntastic_quiet_warnings=0<CR>
 
 cmap w!! %!sudo tee > /dev/null %
 
