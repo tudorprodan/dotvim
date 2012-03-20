@@ -58,7 +58,6 @@ if executable("par")
 endif
 
 set autoindent
-set smartindent
 set number
 
 set wildmenu
