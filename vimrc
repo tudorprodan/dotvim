@@ -40,7 +40,8 @@ nnoremap <leader>sw :SyntasticToggleWarnings<CR>
 "nnoremap <leader>swq :let g:syntastic_quiet_warnings=1<CR>
 "nnoremap <leader>swv :let g:syntastic_quiet_warnings=0<CR>
 
-cmap w!! %!sudo tee > /dev/null %
+inoremap jj <Esc>
+inoremap jk <Esc>
 
 
 """"""""""""""""""""""""""""""""""""""""
@@ -150,3 +151,5 @@ endfunction
 
 command! -nargs=0 WhitespaceCleanup call s:WhitespaceCleanup()
 command! -nargs=0 SyntasticToggleWarnings call s:SyntasticToggleWarnings()
+
+cmap w!! %!sudo tee > /dev/null %
