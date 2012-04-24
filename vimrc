@@ -2,6 +2,7 @@
 " Pathogen
 """"""""""""""""""""""""""""""""""""""""
 let g:pathogen_disabled = ["yankring", "fuzzyfinder", "l9", "minibufexpl", "ctrlp"]
+"let g:pathogen_disabled = ["yankring", "fuzzyfinder", "l9", "minibufexpl", "command_t"]
 
 if !has('gui_running')
     call add(g:pathogen_disabled, 'csscolor')
@@ -30,8 +31,11 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 
 "nnoremap <C-f> :FufFile **/<CR>
 "nnoremap <C-b> :FufBuffer<CR>
+
 nnoremap <C-f> :CommandT<CR>
 nnoremap <C-b> :CommandTBuffer<CR>
+
+"let g:ctrlp_map = "<C-f>"
 
 nnoremap <leader>bd :Bclose<CR>
 nnoremap <leader>bD :Bclose!<CR>
