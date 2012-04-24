@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""""
 " Pathogen
 """"""""""""""""""""""""""""""""""""""""
-let g:pathogen_disabled = ["yankring", "fuzzyfinder", "l9", "minibufexpl"]
+let g:pathogen_disabled = ["yankring", "fuzzyfinder", "l9", "minibufexpl", "ctrlp"]
 
 if !has('gui_running')
     call add(g:pathogen_disabled, 'csscolor')
