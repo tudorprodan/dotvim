@@ -1,8 +1,8 @@
 """"""""""""""""""""""""""""""""""""""""
 " Pathogen
 """"""""""""""""""""""""""""""""""""""""
-let g:pathogen_disabled = ["yankring", "fuzzyfinder", "l9", "minibufexpl", "ctrlp"]
-"let g:pathogen_disabled = ["yankring", "fuzzyfinder", "l9", "minibufexpl", "command_t"]
+"let g:pathogen_disabled = ["yankring", "fuzzyfinder", "l9", "minibufexpl", "ctrlp"]
+let g:pathogen_disabled = ["yankring", "fuzzyfinder", "l9", "minibufexpl", "command_t"]
 
 if !has('gui_running')
     call add(g:pathogen_disabled, 'csscolor')
@@ -10,6 +10,7 @@ endif
 
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
+call pathogen#helptags()
 
 filetype indent on
 filetype plugin indent on
@@ -32,8 +33,8 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 "nnoremap <C-f> :FufFile **/<CR>
 "nnoremap <C-b> :FufBuffer<CR>
 
-nnoremap <C-f> :CommandT<CR>
-nnoremap <C-b> :CommandTBuffer<CR>
+"nnoremap <C-f> :CommandT<CR>
+"nnoremap <C-b> :CommandTBuffer<CR>
 
 "let g:ctrlp_map = "<C-f>"
 
@@ -46,6 +47,46 @@ nnoremap <leader>sw :SyntasticToggleWarnings<CR>
 
 inoremap jj <Esc>
 inoremap jk <Esc>
+
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/*.pyc  " Linux/MacOSX
+let g:ctrlp_map = "<C-f>"
+nnoremap <C-b> :CtrlPBuffer<CR>
+let g:ctrlp_prompt_mappings = {
+    \ 'PrtBS()':              ['<bs>', '<c-]>'],
+    \ 'PrtDelete()':          ['<del>'],
+    \ 'PrtDeleteWord()':      ['<c-w>'],
+    \ 'PrtClear()':           ['<c-u>'],
+    \ 'PrtSelectMove("j")':   ['<c-n>', '<c-j>'],
+    \ 'PrtSelectMove("k")':   ['<c-p>', '<c-k>'],
+    \ 'PrtSelectMove("t")':   ['<Home>', '<kHome>'],
+    \ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
+    \ 'PrtSelectMove("u")':   ['<PageUp>', '<kPageUp>'],
+    \ 'PrtSelectMove("d")':   ['<PageDown>', '<kPageDown>'],
+    \ 'PrtHistory(-1)':       [],
+    \ 'PrtHistory(1)':        [],
+    \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
+    \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
+    \ 'AcceptSelection("t")': ['<c-t>'],
+    \ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>'],
+    \ 'ToggleFocus()':        ['<s-tab>'],
+    \ 'ToggleRegex()':        ['<c-r>'],
+    \ 'ToggleByFname()':      ['<c-d>'],
+    \ 'ToggleType(1)':        ['<c-f>'],
+    \ 'ToggleType(-1)':       ['<c-b>'],
+    \ 'PrtExpandDir()':       ['<tab>'],
+    \ 'PrtInsert("c")':       ['<MiddleMouse>', '<insert>'],
+    \ 'PrtInsert()':          ['<c-\>'],
+    \ 'PrtCurStart()':        ['<c-a>'],
+    \ 'PrtCurEnd()':          ['<c-e>'],
+    \ 'PrtCurLeft()':         ['<c-h>', '<c-^>'],
+    \ 'PrtCurRight()':        ['<c-l>',],
+    \ 'PrtClearCache()':      ['<F5>'],
+    \ 'PrtDeleteEnt()':       ['<F7>'],
+    \ 'CreateNewFile()':      ['<c-y>'],
+    \ 'MarkToOpen()':         ['<c-z>'],
+    \ 'OpenMulti()':          ['<c-o>'],
+    \ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>'],
+    \ }
 
 
 """"""""""""""""""""""""""""""""""""""""
