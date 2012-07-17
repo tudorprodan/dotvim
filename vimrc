@@ -1,16 +1,33 @@
 """"""""""""""""""""""""""""""""""""""""
-" Pathogen
+" Defaults
 """"""""""""""""""""""""""""""""""""""""
-let g:pathogen_disabled = ["yankring", "fuzzyfinder", "l9", "minibufexpl", "powerline", "command_t"]
-
-if !has('gui_running')
-    call add(g:pathogen_disabled, 'csscolor')
+if !exists("z_disable_lambda_replacement_conceal")
+    let z_disable_lambda_replacement_conceal = 1
 endif
 
-runtime bundle/pathogen/autoload/pathogen.vim
-call pathogen#infect()
-call pathogen#helptags()
+if !exists("g:has_patched_font")
+    let g:has_patched_font = 0
+endif
 
+""""""""""""""""""""""""""""""""""""""""
+" Pathogen
+""""""""""""""""""""""""""""""""""""""""
+let g:pathogen_disabled = ["yankring", "fuzzyfinder", "l9", "minibufexpl", "command_t"]
+
+if !has("gui_running")
+    call add(g:pathogen_disabled, "csscolor")
+endif
+
+if g:has_patched_font
+    call add(g:pathogen_disabled, "statline")
+else
+    call add(g:pathogen_disabled, "powerline")
+endif
+
+
+""""""""""""""""""""""""""""""""""""""""
+" Misc
+""""""""""""""""""""""""""""""""""""""""
 filetype indent on
 filetype plugin indent on
 
@@ -115,6 +132,7 @@ set showcmd
 set incsearch
 set hidden
 set nowrap
+set laststatus=2
 
 set completeopt=menu,preview,longest
 
@@ -170,12 +188,9 @@ let g:statline_filename_relative=1
 
 let python_highlight_all = 1
 
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
 let g:user_zen_settings = { "indentation": "    " }
 
+let g:Powerline_symbols = "fancy"
 
 """""""""""""""""""""""""""""""""""""""""""""
 " Functions
@@ -192,8 +207,8 @@ function! s:WhitespaceCleanup()
 endfunction
 
 function! s:SyntasticToggleWarnings()
-    :let g:syntastic_quiet_warnings=!g:syntastic_quiet_warnings
-    :echo "syntastic_quiet_warnings = " . g:syntastic_quiet_warnings
+    let g:syntastic_quiet_warnings=!g:syntastic_quiet_warnings
+    echo "syntastic_quiet_warnings = " . g:syntastic_quiet_warnings
 endfunction
 
 command! -nargs=0 WhitespaceCleanup call s:WhitespaceCleanup()
@@ -205,18 +220,25 @@ cmap w!! %!sudo tee > /dev/null %
 """"""""""""""""""""""""""""""""""""""""
 " Bind keypad numbers
 """"""""""""""""""""""""""""""""""""""""
-:inoremap <Esc>Oq 1
-:inoremap <Esc>Or 2
-:inoremap <Esc>Os 3
-:inoremap <Esc>Ot 4
-:inoremap <Esc>Ou 5
-:inoremap <Esc>Ov 6
-:inoremap <Esc>Ow 7
-:inoremap <Esc>Ox 8
-:inoremap <Esc>Oy 9
-:inoremap <Esc>Op 0
-:inoremap <Esc>On .
-:inoremap <Esc>OQ /
-:inoremap <Esc>OR *
-:inoremap <Esc>Ol +
-:inoremap <Esc>OS -
+inoremap <Esc>Oq 1
+inoremap <Esc>Or 2
+inoremap <Esc>Os 3
+inoremap <Esc>Ot 4
+inoremap <Esc>Ou 5
+inoremap <Esc>Ov 6
+inoremap <Esc>Ow 7
+inoremap <Esc>Ox 8
+inoremap <Esc>Oy 9
+inoremap <Esc>Op 0
+inoremap <Esc>On .
+inoremap <Esc>OQ /
+inoremap <Esc>OR *
+inoremap <Esc>Ol +
+inoremap <Esc>OS -
+
+""""""""""""""""""""""""""""""""""""""""
+" Pathogen infecting
+""""""""""""""""""""""""""""""""""""""""
+runtime bundle/pathogen/autoload/pathogen.vim
+call pathogen#infect()
+call pathogen#helptags()
