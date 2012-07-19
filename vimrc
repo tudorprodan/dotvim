@@ -44,7 +44,7 @@ endfor
 nnoremap <C-p> :bp<CR>
 nnoremap <C-n> :bn<CR>
 
-nnoremap <C-t> :NERDTreeToggle<CR>
+"nnoremap <C-t> :NERDTreeToggle<CR>
 
 "nnoremap <C-f> :FufFile **/<CR>
 "nnoremap <C-b> :FufBuffer<CR>
