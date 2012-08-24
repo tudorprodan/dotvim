@@ -88,3 +88,6 @@
 [submodule "bundle/less"]
 	path = bundle/less
 	url = git://github.com/groenewege/vim-less.git
+[submodule "bundle/html_annoyance"]
+	path = bundle/html_annoyance
+	url = git@github.com:tudorprodan/html_annoyance.vim.git
