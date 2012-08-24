@@ -35,6 +35,8 @@ filetype plugin indent on
 """"""""""""""""""""""""""""""""""""""""
 " Keymaps
 """"""""""""""""""""""""""""""""""""""""
+let mapleader = ","
+
 for key in ['h', 'j', 'k', 'l']
     exe "nnoremap <C-" . key . "> <C-w>" . key
 endfor
