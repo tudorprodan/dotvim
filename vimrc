@@ -12,7 +12,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""
 " Pathogen
 """"""""""""""""""""""""""""""""""""""""
-let g:pathogen_disabled = ["yankring", "fuzzyfinder", "l9", "minibufexpl", "command_t"]
+let g:pathogen_disabled = ["yankring", "minibufexpl", "command_t"]
 
 if !has("gui_running")
     call add(g:pathogen_disabled, "csscolor")
@@ -35,6 +35,8 @@ filetype plugin indent on
 """"""""""""""""""""""""""""""""""""""""
 " Keymaps
 """"""""""""""""""""""""""""""""""""""""
+let mapleader = ","
+
 for key in ['h', 'j', 'k', 'l']
     exe "nnoremap <C-" . key . "> <C-w>" . key
 endfor

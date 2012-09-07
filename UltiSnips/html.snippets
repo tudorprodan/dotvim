@@ -1,0 +1,12 @@
+snippet xhandlebars "<script type=text/x-handlebars>" !b
+<script type="text/x-handlebars"`!p snip.rv=' data-template-name="' if t[1] else ""`${1:name}`!p snip.rv = '"' if t[1] else ""`>
+    $0
+</script>
+endsnippet
+
+snippet div "Better div" !b
+<div`!p snip.rv=' id="' if t[1] else ""`${1:name}`!p snip.rv = '"' if t[1] else ""`>
+$0
+</div>
+endsnippet
+
