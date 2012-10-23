@@ -91,3 +91,6 @@
 [submodule "bundle/html_annoyance"]
 	path = bundle/html_annoyance
 	url = git@github.com:tudorprodan/html_annoyance.vim.git
+[submodule "bundle/hemisu"]
+	path = bundle/hemisu
+	url = git://github.com/noahfrederick/Hemisu.git
