@@ -168,6 +168,7 @@ set expandtab
 
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
+set showbreak=↪
 
 set shortmess=atTOI
 
