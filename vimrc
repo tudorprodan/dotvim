@@ -25,6 +25,7 @@ else
 endif
 
 
+
 """"""""""""""""""""""""""""""""""""""""
 " Misc
 """"""""""""""""""""""""""""""""""""""""
@@ -62,6 +63,14 @@ nnoremap <leader>bD :Bclose!<CR>
 nnoremap <leader>sw :SyntasticToggleWarnings<CR>
 "nnoremap <leader>swq :let g:syntastic_quiet_warnings=1<CR>
 "nnoremap <leader>swv :let g:syntastic_quiet_warnings=0<CR>
+
+"nmap <leader>p <Plug>yankstack_substitute_older_paste
+"xmap <leader>p <Plug>yankstack_substitute_older_paste
+"imap <leader>p <Plug>yankstack_substitute_older_paste
+"nmap <leader>n <Plug>yankstack_substitute_newer_paste
+"xmap <leader>n <Plug>yankstack_substitute_newer_paste
+"imap <leader>n <Plug>yankstack_substitute_newer_paste
+
 
 inoremap jj <Esc>
 inoremap jk <Esc>
@@ -193,6 +202,8 @@ let python_highlight_all = 1
 let g:user_zen_settings = { "indentation": "    " }
 
 let g:Powerline_symbols = "fancy"
+
+let g:yankstack_map_keys = 0
 
 """""""""""""""""""""""""""""""""""""""""""""
 " Functions
