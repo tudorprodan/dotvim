@@ -1,4 +1,16 @@
-
 snippet ipdb "Set IPDB breakpoint" b
 import ipdb; ipdb.set_trace()
+endsnippet
+
+clearsnippets def
+
+snippet def "function withOUT docstrings" b
+def ${1:function}(`!p
+if snip.indent:
+   snip.rv = 'self' + (", " if len(t[2]) else "")`${2:arg1}):
+    ${0:pass}
+endsnippet
+
+snippet charfield "Django CharField" w
+models.CharField(max_length=255)
 endsnippet
