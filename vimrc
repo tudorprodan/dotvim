@@ -172,6 +172,12 @@ set showbreak=↪
 
 set shortmess=atTOI
 
+" fix slight delay after pressing ESC then O
+" http://ksjoberg.com/vim-esckeys.html
+" set noesckeys
+"set timeout timeoutlen=1000 ttimeoutlen=100
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""
 " Plugins
