@@ -97,3 +97,6 @@
 [submodule "bundle/pyfinder.vim"]
 	path = bundle/pyfinder.vim
 	url = git@github.com:tudorprodan/pyfinder.vim.git
+[submodule "bundle/abolish"]
+	path = bundle/abolish
+	url = git://github.com/tpope/vim-abolish.git
