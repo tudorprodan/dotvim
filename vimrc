@@ -213,7 +213,7 @@ let g:Powerline_symbols = "fancy"
 let g:yankstack_map_keys = 0
 
 let g:syntastic_python_checker = "flake8"
-let g:syntastic_python_checker_args = "--ignore=E301,E302,E303,E501"
+let g:syntastic_python_flake8_args = "--ignore=E301,E302,E303,E501"
 
 """""""""""""""""""""""""""""""""""""""""""""
 " Functions
