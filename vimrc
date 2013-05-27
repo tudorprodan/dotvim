@@ -172,6 +172,8 @@ set showbreak=↪
 
 set shortmess=atTOI
 
+set visualbell
+
 " fix slight delay after pressing ESC then O
 " http://ksjoberg.com/vim-esckeys.html
 " set noesckeys
@@ -213,7 +215,7 @@ let g:Powerline_symbols = "fancy"
 let g:yankstack_map_keys = 0
 
 let g:syntastic_python_checker = "flake8"
-let g:syntastic_python_flake8_args = "--ignore=E301,E302,E303,E501"
+let g:syntastic_python_flake8_args = "--ignore=E301,E302,E303,E501,W391"
 
 """""""""""""""""""""""""""""""""""""""""""""
 " Functions
