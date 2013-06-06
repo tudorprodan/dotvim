@@ -100,3 +100,6 @@
 [submodule "bundle/abolish"]
 	path = bundle/abolish
 	url = git://github.com/tpope/vim-abolish.git
+[submodule "bundle/visual_star_search"]
+	path = bundle/visual_star_search
+	url = git://github.com/nelstrom/vim-visual-star-search.git
