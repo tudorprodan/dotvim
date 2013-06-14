@@ -100,6 +100,9 @@
 [submodule "bundle/abolish"]
 	path = bundle/abolish
 	url = git://github.com/tpope/vim-abolish.git
+[submodule "bundle/pep8_indent"]
+	path = bundle/pep8_indent
+	url = git://github.com/hynek/vim-python-pep8-indent.git
 [submodule "bundle/visual_star_search"]
 	path = bundle/visual_star_search
 	url = git://github.com/nelstrom/vim-visual-star-search.git
