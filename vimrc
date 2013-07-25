@@ -209,6 +209,7 @@ let g:statline_filename_relative=1
 let python_highlight_all = 1
 
 let g:user_zen_settings = { "indentation": "    " }
+let g:user_zen_expandabbr_key = "<C-y><Tab>"
 
 let g:Powerline_symbols = "fancy"
 
