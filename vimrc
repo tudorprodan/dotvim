@@ -12,7 +12,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""
 " Pathogen
 """"""""""""""""""""""""""""""""""""""""
-let g:pathogen_disabled = ["yankring", "minibufexpl", "command_t"]
+let g:pathogen_disabled = ["yankring", "minibufexpl", "command_t", "numbers"]
 
 if !has("gui_running")
     call add(g:pathogen_disabled, "csscolor")
