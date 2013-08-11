@@ -1,3 +1,56 @@
+global !p
+
+import vim
+
+def find_def_name(ident):
+
+    cp = vim.eval('getpos(".")')
+
+    # Find the nearest def
+    vim.eval("searchpos('" + ident + "', 'b')")
+
+    # Get the name of the def/method/etc.  
+    vim.command('execute "normal W"')
+    dname = vim.eval("expand('<cword>')")
+    vim.command("call setpos('.', " + str(cp) + ")")
+
+    return dname
+
+def get_nearest_def_args(ident='def', strip_self=False):
+    cp = vim.eval('getpos(".")')
+
+    # Find the nearest def
+    vim.eval("searchpos('" + ident + "', 'b')")
+    spos = int(vim.eval("searchpos('(')")[1])
+    epos = int(vim.eval("searchpos(')')")[1])
+    line = vim.eval("getline('.')")
+    args = line[spos:epos-1]
+    args = args.strip()
+
+    if strip_self:
+        if args.startswith('self'):
+            args = args[4:]
+            args = args[args.find(',')+1:]
+            args = args.strip()
+
+    # Break up the args and remove any default arguments.
+    args = args.split(',')
+
+    nargs = []
+    for arg in args:
+        arg = arg.strip()
+        parts = arg.split('=', 1)
+        nargs.append(parts[0])
+    # end for arg in args
+
+    vim.command("call setpos('.', " + str(cp) + ")")
+
+    return ', '.join(nargs)
+
+
+endglobal
+
+
 clearsnippets def
 
 snippet def "function withOUT docstrings" b
@@ -9,4 +62,8 @@ endsnippet
 
 snippet charfield "Django CharField" w
 models.CharField(max_length=255)
+endsnippet
+
+snippet super "super(Class, self).method"
+super(${1:`!p snip.rv += find_def_name("class ")`}, self).${2:`!p snip.rv += find_def_name("def ")`}(${3:`!p snip.rv += get_nearest_def_args(strip_self=True)`})${0}
 endsnippet
