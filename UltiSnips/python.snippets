@@ -7,7 +7,7 @@ def find_def_name(ident):
     cp = vim.eval('getpos(".")')
 
     # Find the nearest def
-    vim.eval("searchpos('" + ident + "', 'b')")
+    vim.eval("searchpos('^[ ]*" + ident + "', 'b')")
 
     # Get the name of the def/method/etc.  
     vim.command('execute "normal W"')
