@@ -10,7 +10,7 @@ def find_def_name(ident):
     vim.eval("searchpos('^[ ]*" + ident + "', 'b')")
 
     # Get the name of the def/method/etc.  
-    vim.command('execute "normal W"')
+    vim.command('execute "normal ^W"')
     dname = vim.eval("expand('<cword>')")
     vim.command("call setpos('.', " + str(cp) + ")")
 
