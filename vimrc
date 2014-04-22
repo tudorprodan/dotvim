@@ -12,7 +12,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""
 " Pathogen
 """"""""""""""""""""""""""""""""""""""""
-let g:pathogen_disabled = ["yankring", "minibufexpl", "command_t", "numbers"]
+let g:pathogen_disabled = ["yankring", "minibufexpl", "command_t", "numbers", "powerline"]
 
 if !has("gui_running")
     call add(g:pathogen_disabled, "csscolor")
@@ -21,7 +21,7 @@ endif
 if g:has_patched_font
     call add(g:pathogen_disabled, "statline")
 else
-    call add(g:pathogen_disabled, "powerline")
+    call add(g:pathogen_disabled, "airline")
 endif
 
 
@@ -217,6 +217,11 @@ let g:yankstack_map_keys = 0
 
 let g:syntastic_python_checker = "flake8"
 let g:syntastic_python_flake8_args = "--ignore=E301,E302,E303,E501,W391"
+
+let g:airline_theme = "powerlineish"
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#virtualenv#enabled = 1
 
 """""""""""""""""""""""""""""""""""""""""""""
 " Functions
