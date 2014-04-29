@@ -42,20 +42,8 @@ for key in ['h', 'j', 'k', 'l']
     exe "nnoremap <C-" . key . "> <C-w>" . key
 endfor
 
-"nnoremap <C-p> :MBEbp<CR>
-"nnoremap <C-n> :MBEbn<CR>
 nnoremap <C-p> :bp<CR>
 nnoremap <C-n> :bn<CR>
-
-"nnoremap <C-t> :NERDTreeToggle<CR>
-
-"nnoremap <C-f> :FufFile **/<CR>
-"nnoremap <C-b> :FufBuffer<CR>
-
-"nnoremap <C-f> :CommandT<CR>
-"nnoremap <C-b> :CommandTBuffer<CR>
-
-"let g:ctrlp_map = "<C-f>"
 
 nnoremap <leader>bd :Bclose<CR>
 nnoremap <leader>bD :Bclose!<CR>
@@ -76,6 +64,7 @@ inoremap jj <Esc>
 inoremap jk <Esc>
 
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/*.pyc  " Linux/MacOSX
+
 let g:ctrlp_map = "<C-f>"
 nnoremap <C-b> :CtrlPBuffer<CR>
 let g:ctrlp_prompt_mappings = {
