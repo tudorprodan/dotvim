@@ -199,6 +199,8 @@ let g:statline_filename_relative=1
 
 let python_highlight_all = 1
 
+let g:NERDCustomDelimiters = { 'python': { 'left': '# ' } }
+
 let g:user_emmet_settings = { "indentation": "    " }
 let g:user_emmet_expandabbr_key = "<C-y><Tab>"
 
