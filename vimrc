@@ -167,6 +167,8 @@ set visualbell
 " http://ksjoberg.com/vim-esckeys.html
 " set noesckeys
 "set timeout timeoutlen=1000 ttimeoutlen=100
+"
+set scrolloff=4
 
 
 
