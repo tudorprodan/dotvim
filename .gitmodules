@@ -112,3 +112,12 @@
 [submodule "bundle/airline"]
 	path = bundle/airline
 	url = git@github.com:bling/vim-airline.git
+[submodule "bundle/vim-snippets"]
+	path = bundle/vim-snippets
+	url = git@github.com:honza/vim-snippets.git
+[submodule "bundle/vim-expand-region"]
+	path = bundle/vim-expand-region
+	url = git@github.com:terryma/vim-expand-region.git
+[submodule "bundle/vim-jinja"]
+	path = bundle/vim-jinja
+	url = git@github.com:mitsuhiko/vim-jinja.git

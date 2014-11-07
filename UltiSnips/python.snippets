@@ -51,12 +51,12 @@ def get_nearest_def_args(ident='def', strip_self=False):
 endglobal
 
 
-clearsnippets def
+#clearsnippets def
 
 snippet def "function withOUT docstrings" b
 def ${1:function}(`!p
 if snip.indent:
-   snip.rv = 'self' + (", " if len(t[2]) else "")`${2:arg1}):
+    snip.rv = 'self' + (", " if len(t[2]) else "")`${2:arg1}):
     ${0:pass}
 endsnippet
 

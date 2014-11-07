@@ -12,7 +12,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""
 " Pathogen
 """"""""""""""""""""""""""""""""""""""""
-let g:pathogen_disabled = ["yankring", "minibufexpl", "command_t", "numbers", "powerline"]
+let g:pathogen_disabled = ["yankring", "minibufexpl", "command_t", "numbers", "powerline", "YouCompleteMe"]
 
 if !has("gui_running")
     call add(g:pathogen_disabled, "csscolor")
@@ -192,7 +192,8 @@ let g:NERDTreeIgnore = ['\.pyc$']
 
 let g:syntastic_enable_signs = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_quiet_warnings = 1
+"let g:syntastic_quiet_warnings = 1
+let g:syntastic_quiet_messages = {'level': 'warnings'}
 
 let g:statline_fugitive=1
 let g:statline_filename_relative=1
@@ -208,13 +209,16 @@ let g:Powerline_symbols = "fancy"
 
 let g:yankstack_map_keys = 0
 
-let g:syntastic_python_checker = "flake8"
-let g:syntastic_python_flake8_args = "--ignore=E301,E302,E303,E501,W391"
+let g:syntastic_python_checkers = ["flake8"]
+let g:syntastic_python_flake8_args = "--ignore=E301,E302,E303,E501,W391,E122,E127"
 
 let g:airline_theme = "powerlineish"
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#virtualenv#enabled = 1
+let g:airline#extensions#branch#enabled = 0
+let g:airline#extensions#whitespace#enabled = 0
+
 
 """""""""""""""""""""""""""""""""""""""""""""
 " Functions
@@ -231,8 +235,13 @@ function! s:WhitespaceCleanup()
 endfunction
 
 function! s:SyntasticToggleWarnings()
-    let g:syntastic_quiet_warnings=!g:syntastic_quiet_warnings
-    echo "syntastic_quiet_warnings = " . g:syntastic_quiet_warnings
+    if has_key(g:syntastic_quiet_messages, "level")
+        unlet g:syntastic_quiet_messages.level
+        echo "Syntastic Warnings ON"
+    else
+        let g:syntastic_quiet_messages.level = "warnings"
+        echo "Syntastic Warnings OFF"
+    endif
 endfunction
 
 command! -nargs=0 WhitespaceCleanup call s:WhitespaceCleanup()
