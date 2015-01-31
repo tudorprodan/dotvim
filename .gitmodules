@@ -115,3 +115,15 @@
 [submodule "bundle/vim-jinja"]
 	path = bundle/vim-jinja
 	url = git@github.com:mitsuhiko/vim-jinja.git
+[submodule "bundle/maktaba"]
+	path = bundle/maktaba
+	url = git@github.com:google/vim-maktaba.git
+[submodule "bundle/codefmtlib"]
+	path = bundle/codefmtlib
+	url = git@github.com:google/vim-codefmtlib
+[submodule "bundle/codefmt"]
+	path = bundle/codefmt
+	url = git@github.com:google/vim-codefmt
+[submodule "bundle/glaive"]
+	path = bundle/glaive
+	url = git@github.com:google/vim-glaive
