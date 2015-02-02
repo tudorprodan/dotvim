@@ -212,6 +212,9 @@ let g:yankstack_map_keys = 0
 let g:syntastic_python_checkers = ["flake8"]
 let g:syntastic_python_flake8_args = "--ignore=E301,E302,E303,E501,W391,E122,E127"
 
+let g:syntastic_c_checkers = []
+let g:syntastic_cpp_checkers = []
+
 let g:airline_theme = "powerlineish"
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#syntastic#enabled = 1
