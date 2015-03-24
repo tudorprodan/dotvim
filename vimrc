@@ -199,6 +199,7 @@ let g:statline_fugitive=1
 let g:statline_filename_relative=1
 
 let python_highlight_all = 1
+let python_version_2 = 1
 
 let g:NERDCustomDelimiters = { 'python': { 'left': '# ' } }
 
@@ -221,6 +222,8 @@ let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#virtualenv#enabled = 1
 let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#whitespace#enabled = 0
+
+autocmd FileType javascript let b:codefmt_formatter = 'js-beautify'
 
 
 """""""""""""""""""""""""""""""""""""""""""""
