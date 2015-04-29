@@ -12,7 +12,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""
 " Pathogen
 """"""""""""""""""""""""""""""""""""""""
-let g:pathogen_disabled = ["yankring", "minibufexpl", "command_t", "numbers", "powerline", "YouCompleteMe"]
+let g:pathogen_disabled = ["yankring", "minibufexpl", "command_t", "numbers", "powerline", "YouCompleteMe", "fugitive"]
 
 if !has("gui_running")
     call add(g:pathogen_disabled, "csscolor")
@@ -219,7 +219,7 @@ let g:syntastic_cpp_checkers = []
 let g:airline_theme = "powerlineish"
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#virtualenv#enabled = 1
+let g:airline#extensions#virtualenv#enabled = 0
 let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#whitespace#enabled = 0
 
@@ -240,6 +240,10 @@ function! s:WhitespaceCleanup()
     :%s/ \+$//ge
 endfunction
 
+function! s:FixPythonCommentWhitespace()
+    :%s/^\(\s*\)#\([^ ]\)/\1# \2
+endfunction
+
 function! s:SyntasticToggleWarnings()
     if has_key(g:syntastic_quiet_messages, "level")
         unlet g:syntastic_quiet_messages.level
@@ -252,6 +256,8 @@ endfunction
 
 command! -nargs=0 WhitespaceCleanup call s:WhitespaceCleanup()
 command! -nargs=0 SyntasticToggleWarnings call s:SyntasticToggleWarnings()
+command! -nargs=0 FixPythonCommentWhitespace call s:FixPythonCommentWhitespace()
+command! -nargs=0 Fmt FormatCode
 
 cmap w!! %!sudo tee > /dev/null %
 
