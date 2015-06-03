@@ -12,7 +12,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""
 " Pathogen
 """"""""""""""""""""""""""""""""""""""""
-let g:pathogen_disabled = ["yankring", "minibufexpl", "command_t", "numbers", "powerline", "YouCompleteMe", "fugitive"]
+let g:pathogen_disabled = ["yankring", "minibufexpl", "command_t", "numbers", "powerline", "YouCompleteMe", "fugitive", "nerdcommenter"]
 
 if !has("gui_running")
     call add(g:pathogen_disabled, "csscolor")
@@ -59,9 +59,22 @@ nnoremap <leader>sw :SyntasticToggleWarnings<CR>
 "xmap <leader>n <Plug>yankstack_substitute_newer_paste
 "imap <leader>n <Plug>yankstack_substitute_newer_paste
 
+"nmap <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+nmap <leader>h :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+
+nnoremap <CR> :noh<CR><CR>
 
 inoremap jj <Esc>
 inoremap jk <Esc>
+
+nnoremap <leader>w :w<CR>
+
+vmap <Leader>y "+y
+" vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
 
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/*.pyc  " Linux/MacOSX
 
