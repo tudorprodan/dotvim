@@ -127,3 +127,9 @@
 [submodule "bundle/glaive"]
 	path = bundle/glaive
 	url = git@github.com:google/vim-glaive
+[submodule "bundle/smartpairs"]
+	path = bundle/smartpairs
+	url = git@github.com:gorkunov/smartpairs.vim.git
+[submodule "bundle/jedi-vim"]
+	path = bundle/jedi-vim
+	url = git@github.com:davidhalter/jedi-vim.git
