@@ -76,6 +76,14 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
+xmap ,c  <Plug>Commentary
+nmap ,c  <Plug>Commentary
+omap ,c  <Plug>Commentary
+nmap ,cc <Plug>CommentaryLine
+nmap cgc <Plug>ChangeCommentary
+nmap ,cu <Plug>Commentary<Plug>Commentary
+
+
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/*.pyc  " Linux/MacOSX
 
 let g:ctrlp_map = "<C-f>"
@@ -183,6 +191,7 @@ set visualbell
 "
 set scrolloff=4
 
+set splitbelow
 
 
 """""""""""""""""""""""""""""""""""""""""""""
