@@ -27,11 +27,12 @@ endif
 
 
 """"""""""""""""""""""""""""""""""""""""
-" Misc
+" Filetype
 """"""""""""""""""""""""""""""""""""""""
 filetype indent on
 filetype plugin indent on
 
+au BufNewFile,BufRead *.mflex set filetype=json
 
 """"""""""""""""""""""""""""""""""""""""
 " Keymaps
