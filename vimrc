@@ -12,7 +12,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""
 " Pathogen
 """"""""""""""""""""""""""""""""""""""""
-let g:pathogen_disabled = ["yankring", "minibufexpl", "command_t", "numbers", "powerline", "YouCompleteMe", "fugitive", "nerdcommenter"]
+let g:pathogen_disabled = ["yankring", "minibufexpl", "command_t", "numbers", "powerline", "YouCompleteMe", "nerdcommenter"]
 
 if !has("gui_running")
     call add(g:pathogen_disabled, "csscolor")
@@ -258,11 +258,13 @@ let g:jedi#goto_assignments_command = '<leader>gg'
 """""""""""""""""""""""""""""""""""""""""""""
 " Functions
 """""""""""""""""""""""""""""""""""""""""""""
-for prefix in ['i', 'n', 'v']
-    for key in ['<Up>', '<Down>', '<Left>', '<Right>']
-        exe prefix . "noremap " . key . " <Nop>"
-    endfor
-endfor
+
+" Commenting this so people can use my vim
+" for prefix in ['i', 'n', 'v']
+"     for key in ['<Up>', '<Down>', '<Left>', '<Right>']
+"         exe prefix . "noremap " . key . " <Nop>"
+"     endfor
+" endfor
 
 function! s:WhitespaceCleanup()
     :%s/\t/    /ge
