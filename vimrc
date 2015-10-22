@@ -248,7 +248,7 @@ let g:airline#extensions#whitespace#enabled = 0
 
 autocmd FileType javascript let b:codefmt_formatter = 'js-beautify'
 
-" let g:jedi#show_call_signatures = 1
+let g:jedi#show_call_signatures = 0
 let g:jedi#goto_assignments_command = '<leader>gg'
 " let g:jedi#goto_command = '<leader>d'
 " let g:jedi#rename_command = '<leader>r'
