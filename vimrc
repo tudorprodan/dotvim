@@ -33,6 +33,7 @@ filetype indent on
 filetype plugin indent on
 
 au BufNewFile,BufRead *.mflex set filetype=json
+au BufNewFile,BufRead *.flex set filetype=json
 
 """"""""""""""""""""""""""""""""""""""""
 " Keymaps
