@@ -64,6 +64,8 @@ nnoremap <leader>sw :SyntasticToggleWarnings<CR>
 "nmap <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 nmap <leader>h :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
+set pastetoggle=<F9>
+
 nnoremap <CR> :noh<CR><CR>
 
 inoremap jj <Esc>
