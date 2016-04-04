@@ -34,6 +34,7 @@ filetype plugin indent on
 
 au BufNewFile,BufRead *.mflex set filetype=json
 au BufNewFile,BufRead *.flex set filetype=json
+au BufNewFile,BufRead *.tbm set filetype=xml
 
 """"""""""""""""""""""""""""""""""""""""
 " Keymaps
@@ -63,6 +64,8 @@ nnoremap <leader>sw :SyntasticToggleWarnings<CR>
 
 "nmap <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 nmap <leader>h :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+
+set pastetoggle=<F9>
 
 nnoremap <CR> :noh<CR><CR>
 
@@ -300,8 +303,11 @@ cmap w!! %!sudo tee > /dev/null %
 " Matcher
 """"""""""""""""""""""""""""""""""""""""
 
+" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files . -co --exclude-standard']
+
 if exists("g:path_to_matcher")
-    let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files . -co --exclude-standard']
     let g:ctrlp_match_func = { 'match': 'GoodMatch' }
 endif
 
