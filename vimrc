@@ -25,6 +25,14 @@ else
 endif
 
 
+""""""""""""""""""""""""""""""""""""""""
+" Pathogen infecting
+""""""""""""""""""""""""""""""""""""""""
+runtime bundle/pathogen/autoload/pathogen.vim
+call pathogen#infect()
+call pathogen#helptags()
+
+
 
 """"""""""""""""""""""""""""""""""""""""
 " Filetype
@@ -88,6 +96,8 @@ nmap ,cc <Plug>CommentaryLine
 nmap cgc <Plug>ChangeCommentary
 nmap ,cu <Plug>Commentary<Plug>Commentary
 
+" increment in tmux
+map <Leader>a <C-a>
 
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/*.pyc  " Linux/MacOSX
 
@@ -260,6 +270,8 @@ let g:jedi#smart_auto_mappings = 0
 " let g:jedi#rename_command = '<leader>r'
 " let g:jedi#usages_command = '<leader>n'
 
+" Tell Molokai in the terminal to use advance colours
+let g:rehash256=1
 
 """""""""""""""""""""""""""""""""""""""""""""
 " Functions
@@ -360,10 +372,3 @@ inoremap <Esc>OS -
 """"""""""""""""""""""""""""""""""""""""
 nnoremap Q <nop>
 
-
-""""""""""""""""""""""""""""""""""""""""
-" Pathogen infecting
-""""""""""""""""""""""""""""""""""""""""
-runtime bundle/pathogen/autoload/pathogen.vim
-call pathogen#infect()
-call pathogen#helptags()
