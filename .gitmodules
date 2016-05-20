@@ -139,3 +139,6 @@
 [submodule "bundle/vim-airline-themes"]
 	path = bundle/vim-airline-themes
 	url = git@github.com:vim-airline/vim-airline-themes.git
+[submodule "bundle/csv.vim"]
+	path = bundle/csv.vim
+	url = git@github.com:chrisbra/csv.vim.git
