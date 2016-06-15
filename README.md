@@ -14,17 +14,8 @@ let z_disable_lambda_replacement_conceal=1
 let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 ```
 
-Run:
+Run `PlugInstall`.
 
-```bash
-git clone git@github.com:tudorprodan/dotvim.git .vim
-cd .vim
-git submodule init
-git submodule update
-cd bundle/command_t
-rake make
-cd ../..
-```
 
 Syntax checkers:
 
