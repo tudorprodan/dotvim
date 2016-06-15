@@ -1,17 +1,20 @@
-Add to ~/.vimrc:
-
+`~/.vimrc`:
 
 ```vim
-source /Users/tudor/.vim/vimrc
-
 if has("gui")
-    set guifont=Monaco:h14
-"    colorscheme molokai
-    colorscheme sunburst
+    set guifont=Monaco\ for\ Powerline
+    set fillchars=vert:≀
 endif
 
-let z_disable_lambda_replacement_conceal=1
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+set t_Co=256
+set background=dark
+
+let g:has_patched_font = 1
+let z_disable_lambda_replacement_conceal = 1
+
+source ~/.vim/vimrc
+
+colorscheme molokai
 ```
 
 Run `PlugInstall`.
