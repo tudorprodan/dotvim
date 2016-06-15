@@ -1,4 +1,66 @@
 """"""""""""""""""""""""""""""""""""""""
+" Vim-Plug
+""""""""""""""""""""""""""""""""""""""""
+call plug#begin('~/.vim/plugged')
+
+Plug '~/.vim/custom'
+
+Plug 'tomasr/molokai'
+Plug 'noahfrederick/Hemisu'
+Plug 'altercation/vim-colors-solarized'
+Plug 'sjl/badwolf'
+
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-repeat'
+
+Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdcommenter'
+
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'godlygeek/tabular'
+Plug 'mileszs/ack.vim'
+Plug 'rking/ag.vim'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'mattn/emmet-vim'
+Plug 'terryma/vim-expand-region'
+Plug 'nelstrom/vim-visual-star-search'
+
+Plug 'kchmck/vim-coffee-script'
+Plug 'chrisbra/csv.vim'
+Plug 'groenewege/vim-less'
+Plug 'mitsuhiko/vim-jinja'
+Plug 'hdima/python-syntax'
+Plug 'elzr/vim-json'
+Plug 'evanmiller/nginx-vim-syntax'
+
+Plug 'davidhalter/jedi-vim'
+
+Plug 'tudorprodan/html_annoyance.vim'
+
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-codefmtlib'
+Plug 'google/vim-glaive'
+
+call plug#end()
+
+call glaive#Install()
+Glaive codefmt plugin[mappings]
+
+
+""""""""""""""""""""""""""""""""""""""""
 " Defaults
 """"""""""""""""""""""""""""""""""""""""
 if !exists("z_disable_lambda_replacement_conceal")
@@ -8,30 +70,6 @@ endif
 if !exists("g:has_patched_font")
     let g:has_patched_font = 0
 endif
-
-""""""""""""""""""""""""""""""""""""""""
-" Pathogen
-""""""""""""""""""""""""""""""""""""""""
-let g:pathogen_disabled = ["yankring", "minibufexpl", "command_t", "numbers", "powerline", "YouCompleteMe", "nerdcommenter"]
-
-if !has("gui_running")
-    call add(g:pathogen_disabled, "csscolor")
-endif
-
-if g:has_patched_font
-    call add(g:pathogen_disabled, "statline")
-else
-    call add(g:pathogen_disabled, "airline")
-endif
-
-
-""""""""""""""""""""""""""""""""""""""""
-" Pathogen infecting
-""""""""""""""""""""""""""""""""""""""""
-runtime bundle/pathogen/autoload/pathogen.vim
-call pathogen#infect()
-call pathogen#helptags()
-
 
 
 """"""""""""""""""""""""""""""""""""""""
@@ -43,6 +81,7 @@ filetype plugin indent on
 au BufNewFile,BufRead *.mflex set filetype=json
 au BufNewFile,BufRead *.flex set filetype=json
 au BufNewFile,BufRead *.tbm set filetype=xml
+
 
 """"""""""""""""""""""""""""""""""""""""
 " Keymaps
@@ -58,19 +97,16 @@ nnoremap <C-n> :bn<CR>
 
 nnoremap <leader>bd :Bclose<CR>
 nnoremap <leader>bD :Bclose!<CR>
-
 nnoremap <leader>sw :SyntasticToggleWarnings<CR>
-"nnoremap <leader>swq :let g:syntastic_quiet_warnings=1<CR>
-"nnoremap <leader>swv :let g:syntastic_quiet_warnings=0<CR>
+nnoremap <leader>w :w<CR>
 
-"nmap <leader>p <Plug>yankstack_substitute_older_paste
-"xmap <leader>p <Plug>yankstack_substitute_older_paste
-"imap <leader>p <Plug>yankstack_substitute_older_paste
-"nmap <leader>n <Plug>yankstack_substitute_newer_paste
-"xmap <leader>n <Plug>yankstack_substitute_newer_paste
-"imap <leader>n <Plug>yankstack_substitute_newer_paste
+vmap <leader>y "+y
+" vmap <leader>d "+d
+nmap <leader>p "+p
+nmap <leader>P "+P
+vmap <leader>p "+p
+vmap <leader>P "+P
 
-"nmap <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 nmap <leader>h :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
 set pastetoggle=<F9>
@@ -79,15 +115,6 @@ nnoremap <CR> :noh<CR><CR>
 
 inoremap jj <Esc>
 inoremap jk <Esc>
-
-nnoremap <leader>w :w<CR>
-
-vmap <Leader>y "+y
-" vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
 
 xmap ,c  <Plug>Commentary
 nmap ,c  <Plug>Commentary
@@ -99,7 +126,8 @@ nmap ,cu <Plug>Commentary<Plug>Commentary
 " increment in tmux
 map <Leader>a <C-a>
 
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/*.pyc  " Linux/MacOSX
+" End Ex-Mode pain
+nnoremap Q <nop>
 
 let g:ctrlp_map = "<C-f>"
 nnoremap <C-b> :CtrlPBuffer<CR>
@@ -141,6 +169,7 @@ let g:ctrlp_prompt_mappings = {
     \ }
 
 
+
 """"""""""""""""""""""""""""""""""""""""
 " Misc
 """"""""""""""""""""""""""""""""""""""""
@@ -148,19 +177,21 @@ if has('mouse')
     set mouse=a
 endif
 
-syntax on
-set hlsearch
 
 if executable("par")
     set formatprg=par\ -w78
 endif
 
-set autoindent
-set number
+syntax on
 
+set hlsearch
 set wildmenu
 set wildmode=longest:full
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/*.pyc  " Linux/MacOSX
+set completeopt=menu,preview,longest
 
+set autoindent
+set number
 set nocompatible
 set backspace=indent,eol,start
 set history=50
@@ -169,11 +200,10 @@ set incsearch
 set hidden
 set nowrap
 set laststatus=2
-
-set completeopt=menu,preview,longest
-
-"set backupdir=~/.vimsaves
-"set directory=~/.vimsaves
+set shortmess=atTOI
+set visualbell
+set scrolloff=4
+set splitbelow
 
 set nobackup
 set noswapfile
@@ -195,34 +225,15 @@ set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 set showbreak=↪
 
-set shortmess=atTOI
-
-set visualbell
-
 " fix slight delay after pressing ESC then O
 " http://ksjoberg.com/vim-esckeys.html
-" set noesckeys
+"set noesckeys
 "set timeout timeoutlen=1000 ttimeoutlen=100
-"
-set scrolloff=4
-
-set splitbelow
 
 
 """""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""""""""""""""""""""""
-let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{} }
-let g:FuzzyFinderOptions.Base.trim_length = 170
-let g:FuzzyFinderOptions.Base.ignore_case = 1
-let g:FuzzyFinderOptions.Base.abbrev_map  = {}
-let g:FuzzyFinderOptions.Base.dont_change_cmdheight = 0
-
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
-
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeHighlightCursorLine = 1
 let g:NERDTreeIgnore = ['\.pyc$']
@@ -230,26 +241,24 @@ let g:NERDTreeIgnore = ['\.pyc$']
 let g:syntastic_enable_signs = 1
 let g:syntastic_auto_loc_list = 1
 "let g:syntastic_quiet_warnings = 1
-let g:syntastic_quiet_messages = {'level': 'warnings'}
-
-let g:statline_fugitive=1
-let g:statline_filename_relative=1
-
+"let g:syntastic_quiet_messages = {'level': 'warnings'}
+"
 let python_highlight_all = 1
 let python_version_2 = 1
 
-let g:NERDCustomDelimiters = { 'python': { 'left': '# ' } }
+let g:jedi#show_call_signatures = 0
+let g:jedi#completions_enabled = 0
+let g:jedi#goto_assignments_command = '<leader>gg'
+let g:jedi#smart_auto_mappings = 0
+" let g:jedi#goto_command = '<leader>d'
+" let g:jedi#rename_command = '<leader>r'
+" let g:jedi#usages_command = '<leader>n'
 
 let g:user_emmet_settings = { "indentation": "    " }
 let g:user_emmet_expandabbr_key = "<C-y><Tab>"
 
-let g:Powerline_symbols = "fancy"
-
-let g:yankstack_map_keys = 0
-
 let g:syntastic_python_checkers = ["flake8"]
 let g:syntastic_python_flake8_args = "--ignore=E301,E302,E303,E501,W391,E122,E127"
-
 let g:syntastic_c_checkers = []
 let g:syntastic_cpp_checkers = []
 
@@ -262,16 +271,9 @@ let g:airline#extensions#whitespace#enabled = 0
 
 autocmd FileType javascript let b:codefmt_formatter = 'js-beautify'
 
-let g:jedi#show_call_signatures = 0
-let g:jedi#completions_enabled = 0
-let g:jedi#goto_assignments_command = '<leader>gg'
-let g:jedi#smart_auto_mappings = 0
-" let g:jedi#goto_command = '<leader>d'
-" let g:jedi#rename_command = '<leader>r'
-" let g:jedi#usages_command = '<leader>n'
-
 " Tell Molokai in the terminal to use advance colours
 let g:rehash256=1
+
 
 """""""""""""""""""""""""""""""""""""""""""""
 " Functions
@@ -366,9 +368,4 @@ inoremap <Esc>OR *
 inoremap <Esc>Ol +
 inoremap <Esc>OS -
 
-
-""""""""""""""""""""""""""""""""""""""""
-" End Ex-Mode pain
-""""""""""""""""""""""""""""""""""""""""
-nnoremap Q <nop>
 
