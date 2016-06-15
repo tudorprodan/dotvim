@@ -201,7 +201,7 @@ set hidden
 set nowrap
 set laststatus=2
 set shortmess=atTOI
-set visualbell
+set novisualbell
 set scrolloff=4
 set splitbelow
 
@@ -224,6 +224,9 @@ set expandtab
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 set showbreak=↪
+
+" Don't try to look in included files
+set complete-=i
 
 " fix slight delay after pressing ESC then O
 " http://ksjoberg.com/vim-esckeys.html
