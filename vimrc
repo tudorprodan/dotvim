@@ -18,6 +18,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
 
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
