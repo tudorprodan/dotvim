@@ -36,6 +36,8 @@ Plug 'hynek/vim-python-pep8-indent'
 Plug 'mattn/emmet-vim'
 Plug 'terryma/vim-expand-region'
 Plug 'nelstrom/vim-visual-star-search'
+Plug 'gorkunov/smartpairs.vim'
+Plug 'justinmk/vim-sneak'
 
 Plug 'kchmck/vim-coffee-script'
 Plug 'chrisbra/csv.vim'
