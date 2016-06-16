@@ -277,8 +277,9 @@ let g:airline#extensions#whitespace#enabled = 0
 autocmd FileType javascript let b:codefmt_formatter = 'js-beautify'
 
 " Tell Molokai in the terminal to use advance colours
-let g:rehash256=1
+let g:rehash256 = 1
 
+let g:vim_json_syntax_conceal = 0
 
 """""""""""""""""""""""""""""""""""""""""""""
 " Functions
