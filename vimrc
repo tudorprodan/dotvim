@@ -57,6 +57,8 @@ Plug 'google/vim-codefmt'
 Plug 'google/vim-codefmtlib'
 Plug 'google/vim-glaive'
 
+Plug 'jreybert/vimagit'
+
 call plug#end()
 
 call glaive#Install()
