@@ -6,9 +6,9 @@ call plug#begin('~/.vim/plugged')
 Plug '~/.vim/custom'
 
 Plug 'tomasr/molokai'
-Plug 'noahfrederick/Hemisu'
-Plug 'altercation/vim-colors-solarized'
-Plug 'sjl/badwolf'
+"Plug 'noahfrederick/Hemisu'
+"Plug 'altercation/vim-colors-solarized'
+"Plug 'sjl/badwolf'
 
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive'
@@ -19,6 +19,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
+"Plug 'tpope/vim-vinegar'
 
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
