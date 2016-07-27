@@ -255,10 +255,11 @@ let g:syntastic_auto_loc_list = 1
 let python_highlight_all = 1
 let python_version_2 = 1
 
-let g:jedi#show_call_signatures = 0
 let g:jedi#completions_enabled = 0
-let g:jedi#goto_assignments_command = '<leader>gg'
+let g:jedi#show_call_signatures = 0
 let g:jedi#smart_auto_mappings = 0
+
+let g:jedi#goto_assignments_command = '<leader>gg'
 " let g:jedi#goto_command = '<leader>d'
 " let g:jedi#rename_command = '<leader>r'
 " let g:jedi#usages_command = '<leader>n'
