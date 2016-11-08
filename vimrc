@@ -201,7 +201,7 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/*.pyc  " Linux/MacOSX
 set completeopt=menu,preview,longest
 
 set autoindent
-set number
+set nonumber
 set nocompatible
 set backspace=indent,eol,start
 set history=50
