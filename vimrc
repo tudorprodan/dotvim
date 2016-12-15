@@ -243,6 +243,9 @@ set complete-=i
 "set noesckeys
 "set timeout timeoutlen=1000 ttimeoutlen=100
 
+" Don't clear using the current background colour
+set t_ut=
+
 
 """""""""""""""""""""""""""""""""""""""""""""
 " Plugins
