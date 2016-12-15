@@ -18,7 +18,7 @@ if version > 580
         syntax reset
     endif
 endif
-let g:colors_name="molokai"
+let g:colors_name="molokai_match_fix"
 
 if exists("g:molokai_original")
     let s:molokai_original = g:molokai_original
@@ -148,22 +148,22 @@ if &t_Co > 255
    hi Character       ctermfg=144
    hi Number          ctermfg=135
    hi String          ctermfg=144
-   hi Conditional     ctermfg=161               cterm=bold
-   hi Constant        ctermfg=135               cterm=bold
+   hi Conditional     ctermfg=161
+   hi Constant        ctermfg=135
    hi Cursor          ctermfg=16  ctermbg=253
-   hi Debug           ctermfg=225               cterm=bold
+   hi Debug           ctermfg=225
    hi Define          ctermfg=81
    hi Delimiter       ctermfg=241
 
    hi DiffAdd                     ctermbg=24
    hi DiffChange      ctermfg=181 ctermbg=239
    hi DiffDelete      ctermfg=162 ctermbg=53
-   hi DiffText                    ctermbg=102 cterm=bold
+   hi DiffText                    ctermbg=102
 
-   hi Directory       ctermfg=118               cterm=bold
+   hi Directory       ctermfg=118
    hi Error           ctermfg=219 ctermbg=89
-   hi ErrorMsg        ctermfg=199 ctermbg=16    cterm=bold
-   hi Exception       ctermfg=118               cterm=bold
+   hi ErrorMsg        ctermfg=199 ctermbg=16
+   hi Exception       ctermfg=118
    hi Float           ctermfg=135
    hi FoldColumn      ctermfg=67  ctermbg=16
    hi Folded          ctermfg=67  ctermbg=16
@@ -172,12 +172,12 @@ if &t_Co > 255
    hi Ignore          ctermfg=244 ctermbg=232
    hi IncSearch       ctermfg=193 ctermbg=16
 
-   hi keyword         ctermfg=161               cterm=bold
+   hi keyword         ctermfg=161
    hi Label           ctermfg=229               cterm=none
    hi Macro           ctermfg=193
    hi SpecialKey      ctermfg=81
 
-   hi MatchParen      ctermfg=233  ctermbg=208 cterm=bold
+   hi MatchParen      ctermfg=233  ctermbg=208
    hi ModeMsg         ctermfg=229
    hi MoreMsg         ctermfg=229
    hi Operator        ctermfg=161
@@ -188,16 +188,16 @@ if &t_Co > 255
    hi PmenuSbar                   ctermbg=232
    hi PmenuThumb      ctermfg=81
 
-   hi PreCondit       ctermfg=118               cterm=bold
+   hi PreCondit       ctermfg=118
    hi PreProc         ctermfg=118
    hi Question        ctermfg=81
-   hi Repeat          ctermfg=161               cterm=bold
+   hi Repeat          ctermfg=161
    hi Search          ctermfg=0   ctermbg=222   cterm=NONE
 
    " marks column
    hi SignColumn      ctermfg=118 ctermbg=235
-   hi SpecialChar     ctermfg=161               cterm=bold
-   hi SpecialComment  ctermfg=245               cterm=bold
+   hi SpecialChar     ctermfg=161
+   hi SpecialComment  ctermfg=245
    hi Special         ctermfg=81
    if has("spell")
        hi SpellBad                ctermbg=52
@@ -205,23 +205,23 @@ if &t_Co > 255
        hi SpellLocal              ctermbg=17
        hi SpellRare  ctermfg=none ctermbg=none  cterm=reverse
    endif
-   hi Statement       ctermfg=161               cterm=bold
+   hi Statement       ctermfg=161
    hi StatusLine      ctermfg=238 ctermbg=253
    hi StatusLineNC    ctermfg=244 ctermbg=232
    hi StorageClass    ctermfg=208
    hi Structure       ctermfg=81
    hi Tag             ctermfg=161
    hi Title           ctermfg=166
-   hi Todo            ctermfg=231 ctermbg=232   cterm=bold
+   hi Todo            ctermfg=231 ctermbg=232
 
    hi Typedef         ctermfg=81
    hi Type            ctermfg=81                cterm=none
    hi Underlined      ctermfg=244               cterm=underline
 
-   hi VertSplit       ctermfg=244 ctermbg=232   cterm=bold
+   hi VertSplit       ctermfg=244 ctermbg=232
    hi VisualNOS                   ctermbg=238
    hi Visual                      ctermbg=235
-   hi WarningMsg      ctermfg=231 ctermbg=238   cterm=bold
+   hi WarningMsg      ctermfg=231 ctermbg=238
    hi WildMenu        ctermfg=81  ctermbg=16
 
    hi Comment         ctermfg=59
@@ -241,25 +241,25 @@ if &t_Co > 255
        hi Character       ctermfg=222
        hi Number          ctermfg=141
        hi String          ctermfg=222
-       hi Conditional     ctermfg=197               cterm=bold
-       hi Constant        ctermfg=141               cterm=bold
+       hi Conditional     ctermfg=197
+       hi Constant        ctermfg=141
 
        hi DiffDelete      ctermfg=125 ctermbg=233
 
-       hi Directory       ctermfg=154               cterm=bold
+       hi Directory       ctermfg=154
        hi Error           ctermfg=222 ctermbg=233
-       hi Exception       ctermfg=154               cterm=bold
+       hi Exception       ctermfg=154
        hi Float           ctermfg=141
        hi Function        ctermfg=154
        hi Identifier      ctermfg=208
 
-       hi Keyword         ctermfg=197               cterm=bold
+       hi Keyword         ctermfg=197
        hi Operator        ctermfg=197
-       hi PreCondit       ctermfg=154               cterm=bold
+       hi PreCondit       ctermfg=154
        hi PreProc         ctermfg=154
-       hi Repeat          ctermfg=197               cterm=bold
+       hi Repeat          ctermfg=197
 
-       hi Statement       ctermfg=197               cterm=bold
+       hi Statement       ctermfg=197
        hi Tag             ctermfg=197
        hi Title           ctermfg=203
        hi Visual                      ctermbg=238
