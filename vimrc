@@ -220,6 +220,7 @@ set shortmess=atTOI
 set novisualbell
 set scrolloff=4
 set splitbelow
+set wrapscan
 
 set nobackup
 set noswapfile
