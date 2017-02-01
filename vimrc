@@ -6,9 +6,9 @@ call plug#begin('~/.vim/plugged')
 Plug '~/.vim/custom'
 
 Plug 'tomasr/molokai'
-"Plug 'noahfrederick/Hemisu'
-"Plug 'altercation/vim-colors-solarized'
-"Plug 'sjl/badwolf'
+" Plug 'noahfrederick/Hemisu'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'sjl/badwolf'
 
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive'
@@ -249,6 +249,9 @@ set complete-=i
 " http://ksjoberg.com/vim-esckeys.html
 "set noesckeys
 "set timeout timeoutlen=1000 ttimeoutlen=100
+
+" Don't clear using the current background colour
+set t_ut=
 
 
 """""""""""""""""""""""""""""""""""""""""""""
