@@ -12,7 +12,7 @@ Plug 'tomasr/molokai'
 
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-unimpaired'
+"Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-speeddating'
