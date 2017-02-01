@@ -21,7 +21,12 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 "Plug 'tpope/vim-vinegar'
 
-Plug 'scrooloose/syntastic'
+if has('nvim')
+    Plug 'neomake/neomake'
+else
+    Plug 'scrooloose/syntastic'
+endif
+
 Plug 'scrooloose/nerdtree'
 "Plug 'scrooloose/nerdcommenter'
 
@@ -59,7 +64,7 @@ Plug 'tudorprodan/html_annoyance.vim'
 
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
-Plug 'google/vim-codefmtlib'
+" Plug 'google/vim-codefmtlib'
 Plug 'google/vim-glaive'
 
 Plug 'jreybert/vimagit'
@@ -251,11 +256,6 @@ let g:NERDTreeWinPos = "right"
 let g:NERDTreeHighlightCursorLine = 1
 let g:NERDTreeIgnore = ['\.pyc$']
 
-let g:syntastic_enable_signs = 1
-let g:syntastic_auto_loc_list = 1
-"let g:syntastic_quiet_warnings = 1
-"let g:syntastic_quiet_messages = {'level': 'warnings'}
-"
 let python_highlight_all = 1
 let python_version_2 = 1
 
@@ -275,13 +275,34 @@ let g:syntastic_python_checkers = ["flake8"]
 let g:syntastic_python_flake8_args = "--ignore=E301,E302,E303,E501,W391,E122,E127"
 let g:syntastic_c_checkers = []
 let g:syntastic_cpp_checkers = []
+let g:syntastic_enable_signs = 1
+let g:syntastic_auto_loc_list = 1
 
-let g:airline_theme = "powerlineish"
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#virtualenv#enabled = 0
-let g:airline#extensions#branch#enabled = 0
-let g:airline#extensions#whitespace#enabled = 0
+if has('nvim')
+    let g:neomake_python_enabled_makers = ['flake8']
+    let g:neomake_python_flake8_maker = {
+        \ 'args': [
+            \ '--format=default',
+            \ '--ignore=E301,E302,E303,E501,W391,E122,E127'
+        \ ],
+        \ 'errorformat':
+            \ '%E%f:%l: could not compile,%-Z%p^,' .
+            \ '%A%f:%l:%c: %t%n %m,' .
+            \ '%A%f:%l: %t%n %m,' .
+            \ '%-G%.%#',
+        \ 'postprocess': function('neomake#makers#ft#python#Flake8EntryProcess')
+        \ }
+    let g:neomake_open_list = 2
+
+    autocmd! BufWritePost * Neomake
+endif
+
+" let g:airline_theme = "powerlineish"
+" let g:airline_powerline_fonts = 1
+" let g:airline#extensions#syntastic#enabled = 1
+" let g:airline#extensions#virtualenv#enabled = 0
+" let g:airline#extensions#branch#enabled = 0
+" let g:airline#extensions#whitespace#enabled = 0
 
 let g:lightline = {
       \ 'colorscheme': 'powerline',
