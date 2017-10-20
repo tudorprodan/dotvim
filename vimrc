@@ -19,7 +19,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
-"Plug 'tpope/vim-vinegar'
+" Plug 'tpope/vim-vinegar'
 
 if has('nvim')
     Plug 'neomake/neomake'
@@ -259,10 +259,10 @@ set t_ut=
 """""""""""""""""""""""""""""""""""""""""""""
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeHighlightCursorLine = 1
-let g:NERDTreeIgnore = ['\.pyc$']
+let g:NERDTreeIgnore = ['\.pyc$', '__pycache__$']
 
 let python_highlight_all = 1
-let python_version_2 = 1
+" let python_version_2 = 1
 
 let g:jedi#completions_enabled = 0
 let g:jedi#show_call_signatures = 0
