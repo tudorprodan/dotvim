@@ -56,7 +56,7 @@ Plug 'groenewege/vim-less'
 Plug 'mitsuhiko/vim-jinja'
 Plug 'hdima/python-syntax'
 Plug 'elzr/vim-json'
-Plug 'evanmiller/nginx-vim-syntax'
+" Plug 'evanmiller/nginx-vim-syntax'
 
 Plug 'davidhalter/jedi-vim'
 
