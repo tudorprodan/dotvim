@@ -22,7 +22,8 @@ Plug 'tpope/vim-commentary'
 " Plug 'tpope/vim-vinegar'
 
 if has('nvim')
-    Plug 'neomake/neomake'
+    " Plug 'neomake/neomake'
+    Plug 'w0rp/ale'
 else
     Plug 'scrooloose/syntastic'
 endif
@@ -68,6 +69,9 @@ Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 
 Plug 'jreybert/vimagit'
+
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
 
 call plug#end()
 
@@ -132,6 +136,10 @@ nnoremap <CR> :noh<CR><CR>
 inoremap jj <Esc>
 inoremap jk <Esc>
 
+" Keep text selected while indenting
+" vnoremap < <gv
+" vnoremap > >gv
+
 xmap ,c  <Plug>Commentary
 nmap ,c  <Plug>Commentary
 omap ,c  <Plug>Commentary
@@ -183,6 +191,13 @@ let g:ctrlp_prompt_mappings = {
     \ 'OpenMulti()':          ['<c-o>'],
     \ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>'],
     \ }
+
+" Rust
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap <leader>d <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 
 
@@ -299,7 +314,15 @@ if has('nvim')
         \ }
     let g:neomake_open_list = 2
 
-    autocmd! BufWritePost * Neomake
+    let g:ale_lint_on_text_changed = 'never'
+    let g:ale_lint_on_enter = 0
+    let g:ale_open_list = 1
+    let g:ale_linters = {
+        \'python': ['flake8'],
+    \}
+    let g:ale_python_flake8_options = '--ignore=E301,E302,E303,E501,W391,E122,E127'
+
+    " autocmd! BufWritePost * Neomake
 endif
 
 " let g:airline_theme = "powerlineish"
@@ -313,7 +336,11 @@ let g:lightline = {
       \ 'colorscheme': 'powerline',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename', 'modified' ] ]
+      \             [ 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'linter_warnings', 'linter_errors', 'linter_ok' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'component': {
       \   'readonly': '%{&readonly?"":""}',
@@ -323,9 +350,44 @@ let g:lightline = {
       \   'readonly': '(&filetype!="help"&& &readonly)',
       \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))'
       \ },
+      \ 'component_expand': {
+      \   'linter_warnings': 'LightlineLinterWarnings',
+      \   'linter_errors': 'LightlineLinterErrors',
+      \ },
+      \ 'component_type': {
+      \   'linter_warnings': 'warning',
+      \   'linter_errors': 'error',
+      \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
+
+
+autocmd User ALELint call lightline#update()
+
+" ale + lightline
+function! LightlineLinterWarnings() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('%d --', all_non_errors)
+endfunction
+
+function! LightlineLinterErrors() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('%d >>', all_errors)
+endfunction
+
+function! LightlineLinterOK() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '✓' : ''
+endfunction
+
+
 
 autocmd FileType javascript let b:codefmt_formatter = 'js-beautify'
 
