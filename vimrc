@@ -6,13 +6,9 @@ call plug#begin('~/.vim/plugged')
 Plug '~/.vim/custom'
 
 Plug 'tomasr/molokai'
-" Plug 'noahfrederick/Hemisu'
-" Plug 'altercation/vim-colors-solarized'
-" Plug 'sjl/badwolf'
 
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive'
-"Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-speeddating'
@@ -31,10 +27,12 @@ endif
 Plug 'scrooloose/nerdtree'
 "Plug 'scrooloose/nerdcommenter'
 
-Plug 'ctrlpvim/ctrlp.vim'
-
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
+if 1
+    Plug 'ctrlpvim/ctrlp.vim'
+else
+    Plug '/home/tudor/.fzf'
+    Plug 'junegunn/fzf.vim'
+endif
 
 Plug 'itchyny/lightline.vim'
 
@@ -57,7 +55,6 @@ Plug 'groenewege/vim-less'
 Plug 'mitsuhiko/vim-jinja'
 Plug 'hdima/python-syntax'
 Plug 'elzr/vim-json'
-" Plug 'evanmiller/nginx-vim-syntax'
 
 Plug 'davidhalter/jedi-vim'
 
@@ -65,7 +62,6 @@ Plug 'tudorprodan/html_annoyance.vim'
 
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
-" Plug 'google/vim-codefmtlib'
 Plug 'google/vim-glaive'
 
 Plug 'jreybert/vimagit'
@@ -153,44 +149,50 @@ map <Leader>a <C-a>
 " End Ex-Mode pain
 nnoremap Q <nop>
 
-let g:ctrlp_map = "<C-f>"
-nnoremap <C-b> :CtrlPBuffer<CR>
-let g:ctrlp_prompt_mappings = {
-    \ 'PrtBS()':              ['<bs>', '<c-]>'],
-    \ 'PrtDelete()':          ['<del>'],
-    \ 'PrtDeleteWord()':      ['<c-w>'],
-    \ 'PrtClear()':           ['<c-u>'],
-    \ 'PrtSelectMove("j")':   ['<c-n>', '<c-j>'],
-    \ 'PrtSelectMove("k")':   ['<c-p>', '<c-k>'],
-    \ 'PrtSelectMove("t")':   ['<Home>', '<kHome>'],
-    \ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
-    \ 'PrtSelectMove("u")':   ['<PageUp>', '<kPageUp>'],
-    \ 'PrtSelectMove("d")':   ['<PageDown>', '<kPageDown>'],
-    \ 'PrtHistory(-1)':       [],
-    \ 'PrtHistory(1)':        [],
-    \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
-    \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
-    \ 'AcceptSelection("t")': ['<c-t>'],
-    \ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>'],
-    \ 'ToggleFocus()':        ['<s-tab>'],
-    \ 'ToggleRegex()':        ['<c-r>'],
-    \ 'ToggleByFname()':      ['<c-d>'],
-    \ 'ToggleType(1)':        ['<c-f>'],
-    \ 'ToggleType(-1)':       ['<c-b>'],
-    \ 'PrtExpandDir()':       ['<tab>'],
-    \ 'PrtInsert("c")':       ['<MiddleMouse>', '<insert>'],
-    \ 'PrtInsert()':          ['<c-\>'],
-    \ 'PrtCurStart()':        ['<c-a>'],
-    \ 'PrtCurEnd()':          ['<c-e>'],
-    \ 'PrtCurLeft()':         ['<c-h>', '<c-^>'],
-    \ 'PrtCurRight()':        ['<c-l>',],
-    \ 'PrtClearCache()':      ['<F5>'],
-    \ 'PrtDeleteEnt()':       ['<F7>'],
-    \ 'CreateNewFile()':      ['<c-y>'],
-    \ 'MarkToOpen()':         ['<c-z>'],
-    \ 'OpenMulti()':          ['<c-o>'],
-    \ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>'],
-    \ }
+if 1
+    let g:ctrlp_map = "<C-f>"
+    nnoremap <C-b> :CtrlPBuffer<CR>
+    let g:ctrlp_prompt_mappings = {
+        \ 'PrtBS()':              ['<bs>', '<c-]>'],
+        \ 'PrtDelete()':          ['<del>'],
+        \ 'PrtDeleteWord()':      ['<c-w>'],
+        \ 'PrtClear()':           ['<c-u>'],
+        \ 'PrtSelectMove("j")':   ['<c-n>', '<c-j>'],
+        \ 'PrtSelectMove("k")':   ['<c-p>', '<c-k>'],
+        \ 'PrtSelectMove("t")':   ['<Home>', '<kHome>'],
+        \ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
+        \ 'PrtSelectMove("u")':   ['<PageUp>', '<kPageUp>'],
+        \ 'PrtSelectMove("d")':   ['<PageDown>', '<kPageDown>'],
+        \ 'PrtHistory(-1)':       [],
+        \ 'PrtHistory(1)':        [],
+        \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
+        \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
+        \ 'AcceptSelection("t")': ['<c-t>'],
+        \ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>'],
+        \ 'ToggleFocus()':        ['<s-tab>'],
+        \ 'ToggleRegex()':        ['<c-r>'],
+        \ 'ToggleByFname()':      ['<c-d>'],
+        \ 'ToggleType(1)':        ['<c-f>'],
+        \ 'ToggleType(-1)':       ['<c-b>'],
+        \ 'PrtExpandDir()':       ['<tab>'],
+        \ 'PrtInsert("c")':       ['<MiddleMouse>', '<insert>'],
+        \ 'PrtInsert()':          ['<c-\>'],
+        \ 'PrtCurStart()':        ['<c-a>'],
+        \ 'PrtCurEnd()':          ['<c-e>'],
+        \ 'PrtCurLeft()':         ['<c-h>', '<c-^>'],
+        \ 'PrtCurRight()':        ['<c-l>',],
+        \ 'PrtClearCache()':      ['<F5>'],
+        \ 'PrtDeleteEnt()':       ['<F7>'],
+        \ 'CreateNewFile()':      ['<c-y>'],
+        \ 'MarkToOpen()':         ['<c-z>'],
+        \ 'OpenMulti()':          ['<c-o>'],
+        \ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>'],
+        \ }
+else
+    " fzf
+    nnoremap <C-f> :Files<CR>
+    nnoremap <C-b> :Buffers<CR>
+endif
 
 " Rust
 au FileType rust nmap gd <Plug>(rust-def)
