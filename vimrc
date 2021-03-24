@@ -17,14 +17,14 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 " Plug 'tpope/vim-vinegar'
 
-if has('nvim')
-    " Plug 'neomake/neomake'
-    Plug 'w0rp/ale'
-else
-    Plug 'scrooloose/syntastic'
-endif
+" if has('nvim')
+"     " Plug 'neomake/neomake'
+"     Plug 'w0rp/ale'
+" else
+"     Plug 'scrooloose/syntastic'
+" endif
 
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "Plug 'scrooloose/nerdcommenter'
 
 if 1
@@ -38,27 +38,26 @@ Plug 'itchyny/lightline.vim'
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'godlygeek/tabular'
-Plug 'mileszs/ack.vim'
-Plug 'rking/ag.vim'
-Plug 'Lokaltog/vim-easymotion'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'mattn/emmet-vim'
 Plug 'terryma/vim-expand-region'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'gorkunov/smartpairs.vim'
-Plug 'justinmk/vim-sneak'
+" Plug 'godlygeek/tabular'
+" Plug 'mileszs/ack.vim'
+" Plug 'rking/ag.vim'
+" Plug 'Lokaltog/vim-easymotion'
+" Plug 'justinmk/vim-sneak'
 
-Plug 'kchmck/vim-coffee-script'
-Plug 'chrisbra/csv.vim'
-Plug 'groenewege/vim-less'
-Plug 'mitsuhiko/vim-jinja'
-Plug 'hdima/python-syntax'
-Plug 'elzr/vim-json'
+Plug 'chrisbra/csv.vim', { 'for': 'csv' }
+Plug 'groenewege/vim-less', { 'for': 'less' }
+Plug 'mitsuhiko/vim-jinja', { 'for': 'html' }
+Plug 'hdima/python-syntax', { 'for': 'python' }
+Plug 'elzr/vim-json', { 'for': 'json' }
 
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 
-Plug 'tudorprodan/html_annoyance.vim'
+Plug 'tudorprodan/html_annoyance.vim', { 'for': 'html' }
 
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
@@ -66,8 +65,10 @@ Plug 'google/vim-glaive'
 
 Plug 'jreybert/vimagit'
 
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+
+Plug 'neoclide/coc.nvim'
 
 call plug#end()
 
@@ -131,6 +132,7 @@ nnoremap <CR> :noh<CR><CR>
 
 inoremap jj <Esc>
 inoremap jk <Esc>
+inoremap <C-c> <Esc>
 
 " Keep text selected while indenting
 " vnoremap < <gv
@@ -201,6 +203,15 @@ au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
+" Coc
+nmap <silent> <leader>d <Plug>(coc-definition)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <leader>rn <Plug>(coc-rename)
 
 
 """"""""""""""""""""""""""""""""""""""""
@@ -238,6 +249,7 @@ set novisualbell
 set scrolloff=4
 set splitbelow
 set wrapscan
+set autoread
 
 set nobackup
 set noswapfile
@@ -270,6 +282,8 @@ set complete-=i
 " Don't clear using the current background colour
 set t_ut=
 
+" Coc github page: You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
 
 """""""""""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -300,6 +314,10 @@ let g:syntastic_cpp_checkers = []
 let g:syntastic_enable_signs = 1
 let g:syntastic_auto_loc_list = 1
 
+let g:netrw_liststyle = 3
+let g:netrw_fastbrowse = 0
+autocmd FileType netrw setl bufhidden=wipe
+
 if has('nvim')
     let g:neomake_python_enabled_makers = ['flake8']
     let g:neomake_python_flake8_maker = {
@@ -326,13 +344,6 @@ if has('nvim')
 
     " autocmd! BufWritePost * Neomake
 endif
-
-" let g:airline_theme = "powerlineish"
-" let g:airline_powerline_fonts = 1
-" let g:airline#extensions#syntastic#enabled = 1
-" let g:airline#extensions#virtualenv#enabled = 0
-" let g:airline#extensions#branch#enabled = 0
-" let g:airline#extensions#whitespace#enabled = 0
 
 let g:lightline = {
       \ 'colorscheme': 'powerline',
@@ -365,29 +376,30 @@ let g:lightline = {
       \ }
 
 
-autocmd User ALELint call lightline#update()
 
-" ale + lightline
-function! LightlineLinterWarnings() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '' : printf('%d --', all_non_errors)
-endfunction
+" " ale + lightline
+" autocmd User ALELint call lightline#update()
 
-function! LightlineLinterErrors() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '' : printf('%d >>', all_errors)
-endfunction
+" function! LightlineLinterWarnings() abort
+"   let l:counts = ale#statusline#Count(bufnr(''))
+"   let l:all_errors = l:counts.error + l:counts.style_error
+"   let l:all_non_errors = l:counts.total - l:all_errors
+"   return l:counts.total == 0 ? '' : printf('%d --', all_non_errors)
+" endfunction
 
-function! LightlineLinterOK() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '✓' : ''
-endfunction
+" function! LightlineLinterErrors() abort
+"   let l:counts = ale#statusline#Count(bufnr(''))
+"   let l:all_errors = l:counts.error + l:counts.style_error
+"   let l:all_non_errors = l:counts.total - l:all_errors
+"   return l:counts.total == 0 ? '' : printf('%d >>', all_errors)
+" endfunction
+
+" function! LightlineLinterOK() abort
+"   let l:counts = ale#statusline#Count(bufnr(''))
+"   let l:all_errors = l:counts.error + l:counts.style_error
+"   let l:all_non_errors = l:counts.total - l:all_errors
+"   return l:counts.total == 0 ? '✓' : ''
+" endfunction
 
 
 
