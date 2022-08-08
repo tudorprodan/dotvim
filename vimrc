@@ -16,16 +16,7 @@ Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 " Plug 'tpope/vim-vinegar'
-
-" if has('nvim')
-"     " Plug 'neomake/neomake'
-"     Plug 'w0rp/ale'
-" else
-"     Plug 'scrooloose/syntastic'
-" endif
-
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-"Plug 'scrooloose/nerdcommenter'
 
 if 1
     Plug 'ctrlpvim/ctrlp.vim'
@@ -49,7 +40,7 @@ Plug 'gorkunov/smartpairs.vim'
 " Plug 'Lokaltog/vim-easymotion'
 " Plug 'justinmk/vim-sneak'
 
-Plug 'chrisbra/csv.vim', { 'for': 'csv' }
+" Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'groenewege/vim-less', { 'for': 'less' }
 Plug 'mitsuhiko/vim-jinja', { 'for': 'html' }
 Plug 'hdima/python-syntax', { 'for': 'python' }
@@ -68,7 +59,13 @@ Plug 'jreybert/vimagit'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 
-Plug 'neoclide/coc.nvim'
+let _use_lsp = 0
+if _use_lsp
+    Plug 'neovim/nvim-lspconfig'
+else
+    Plug 'neoclide/coc.nvim'
+endif
+
 
 call plug#end()
 
@@ -124,7 +121,7 @@ nmap <leader>P "+P
 vmap <leader>p "+p
 vmap <leader>P "+P
 
-nmap <leader>h :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+" nmap <leader>h :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
 set pastetoggle=<F9>
 
@@ -203,15 +200,35 @@ au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
-" Coc
-nmap <silent> <leader>d <Plug>(coc-definition)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-nmap <leader>rn <Plug>(coc-rename)
+if _use_lsp
+    " LSP
+lua << EOF
+require 'lspconfig'.pyls.setup{}
+EOF
+    nnoremap <silent> <leader>d <cmd>lua vim.lsp.buf.definition()<CR>
+    nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+    nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+    nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+    nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+    nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+    nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+    nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+    nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+    let _lsp_statusline_part = []
+    set omnifunc=v:lua.vim.lsp.omnifunc
+    " buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+else
+    " Coc
+    nmap <silent> <leader>d <Plug>(coc-definition)
+    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> gr <Plug>(coc-references)
+    nmap <silent> [g <Plug>(coc-diagnostic-prev)
+    nmap <silent> ]g <Plug>(coc-diagnostic-next)
+    nmap <leader>rn <Plug>(coc-rename)
+    let _lsp_statusline_part = ['cocstatus']
+endif
 
 
 """"""""""""""""""""""""""""""""""""""""
@@ -318,32 +335,7 @@ let g:netrw_liststyle = 3
 let g:netrw_fastbrowse = 0
 autocmd FileType netrw setl bufhidden=wipe
 
-if has('nvim')
-    let g:neomake_python_enabled_makers = ['flake8']
-    let g:neomake_python_flake8_maker = {
-        \ 'args': [
-            \ '--format=default',
-            \ '--ignore=E301,E302,E303,E501,W391,E122,E127'
-        \ ],
-        \ 'errorformat':
-            \ '%E%f:%l: could not compile,%-Z%p^,' .
-            \ '%A%f:%l:%c: %t%n %m,' .
-            \ '%A%f:%l: %t%n %m,' .
-            \ '%-G%.%#',
-        \ 'postprocess': function('neomake#makers#ft#python#Flake8EntryProcess')
-        \ }
-    let g:neomake_open_list = 2
 
-    let g:ale_lint_on_text_changed = 'never'
-    let g:ale_lint_on_enter = 0
-    let g:ale_open_list = 1
-    let g:ale_linters = {
-        \'python': ['flake8'],
-    \}
-    let g:ale_python_flake8_options = '--ignore=E301,E302,E303,E501,W391,E122,E127'
-
-    " autocmd! BufWritePost * Neomake
-endif
 
 let g:lightline = {
       \ 'colorscheme': 'powerline',
@@ -352,6 +344,7 @@ let g:lightline = {
       \             [ 'readonly', 'filename', 'modified' ] ],
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
+      \              _lsp_statusline_part +
       \              [ 'linter_warnings', 'linter_errors', 'linter_ok' ],
       \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
@@ -371,39 +364,16 @@ let g:lightline = {
       \   'linter_warnings': 'warning',
       \   'linter_errors': 'error',
       \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status'
+      \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
 
 
-
-" " ale + lightline
-" autocmd User ALELint call lightline#update()
-
-" function! LightlineLinterWarnings() abort
-"   let l:counts = ale#statusline#Count(bufnr(''))
-"   let l:all_errors = l:counts.error + l:counts.style_error
-"   let l:all_non_errors = l:counts.total - l:all_errors
-"   return l:counts.total == 0 ? '' : printf('%d --', all_non_errors)
-" endfunction
-
-" function! LightlineLinterErrors() abort
-"   let l:counts = ale#statusline#Count(bufnr(''))
-"   let l:all_errors = l:counts.error + l:counts.style_error
-"   let l:all_non_errors = l:counts.total - l:all_errors
-"   return l:counts.total == 0 ? '' : printf('%d >>', all_errors)
-" endfunction
-
-" function! LightlineLinterOK() abort
-"   let l:counts = ale#statusline#Count(bufnr(''))
-"   let l:all_errors = l:counts.error + l:counts.style_error
-"   let l:all_non_errors = l:counts.total - l:all_errors
-"   return l:counts.total == 0 ? '✓' : ''
-" endfunction
-
-
-
 autocmd FileType javascript let b:codefmt_formatter = 'js-beautify'
+autocmd FileType python let b:codefmt_formatter = 'autopep8'
 
 " Tell Molokai in the terminal to use advance colours
 let g:rehash256 = 1
@@ -504,3 +474,4 @@ inoremap <Esc>Ol +
 inoremap <Esc>OS -
 
 
+command Exec set splitbelow | vnew | set filetype=sh | read !sh #

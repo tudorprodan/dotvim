@@ -1,0 +1,7 @@
+{
+    "python.jediEnabled": false,
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Args": ["--ignore=E301,E302,E303,E501,W504,W391,E122,E127,E741"]
+}
