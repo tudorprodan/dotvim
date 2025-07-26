@@ -1,3 +1,5 @@
+# Deprecated, moved to dotfiles
+
 `~/.vimrc`:
 
 ```vim

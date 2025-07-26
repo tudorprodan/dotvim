@@ -27,8 +27,8 @@ endif
 
 Plug 'itchyny/lightline.vim'
 
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'mattn/emmet-vim'
 Plug 'terryma/vim-expand-region'
@@ -57,7 +57,7 @@ Plug 'google/vim-glaive'
 Plug 'jreybert/vimagit'
 
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+" Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 
 let _use_lsp = 0
 if _use_lsp
